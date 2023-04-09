@@ -7,7 +7,7 @@ This repo contains a couple of end-to-end tests for the search functionality on 
 
 ## Running the Tests
 
-The steps below will take you through running the tests. It is assumed you have Node.js (version v19.8.1) and git installed.
+The steps below will take you through running the tests. It is assumed you have Node.js (recommended version v18.15.0 and above) and git installed.
 
 ### 1. Clone this repo and open Cypress
 ```bash
