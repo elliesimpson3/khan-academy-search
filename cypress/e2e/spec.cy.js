@@ -8,26 +8,32 @@ describe('Searchbar from homepage', () => {
   })
 
   const SEARCH_BOX = '[data-test-id="page-search-box"]';
-  const SEARCH_RESULTS = '.gsc-expansionArea .gsc-webResult.gsc-result';
 
-  it('searches for a valid course', () => {
-    cy.get(SEARCH_BOX).type('Intro to JS')
+  it('searches for a valid course with more than 10 results', () => {
+    const SEARCH_RESULTS = '.gsc-expansionArea .gsc-webResult.gsc-result';
+    const VALID_KEYWORD = 'Intro to JS'
+    const RESULT_TITLE = '.gsc-thumbnail-inside a.gs-title'
+    const SHOW_ALL_LINK = '.google-popup-results > a'
+
+    cy.get(SEARCH_BOX).type(VALID_KEYWORD)
     cy.get(SEARCH_RESULTS).then(($resultcards) => {
       expect($resultcards).to.have.length(5)
-      expect($resultcards.first().find('.gsc-thumbnail-inside a.gs-title').first()).to.contain('Intro to JS')
+      // First result should be the first item
+      expect($resultcards.first().find(RESULT_TITLE).first()).to.contain(VALID_KEYWORD)
+      cy.get(SHOW_ALL_LINK).click()
+      cy.get(SEARCH_RESULTS).then(($resultcards) => {
+        expect($resultcards).to.have.length(10)
+        // First page of pagination is selected
+        cy.get('.gsc-cursor div').first().should('have.class', 'gsc-cursor-current-page')
+      })
     })
   })
 
   it('searches for an invalid course', () => {
-    cy.get(SEARCH_BOX).type('qweqwe')
-    cy.get('.gsc-expansionArea .gsc-webResult.gsc-result div').should('have.class', 'gs-no-results-result')
-  })
+    const INVALID_KEYWORD = 'qweqwe'
+    const RESULTS_BLOCK = '.gsc-expansionArea .gsc-webResult.gsc-result div'
 
-  it('searches and loads more results', () => {
-    cy.get(SEARCH_BOX).type('Intro to JS')
-    cy.get('.google-popup-results > a').click()
-    cy.get(SEARCH_RESULTS).then(($resultcards) => {
-      expect($resultcards).to.have.length(10)
-    })
+    cy.get(SEARCH_BOX).type(INVALID_KEYWORD)
+    cy.get(RESULTS_BLOCK).should('have.class', 'gs-no-results-result')
   })
 })
