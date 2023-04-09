@@ -33,3 +33,7 @@ b) Select Chrome, and click 'Start E2E Testing in Chrome'
 
 ## Watch them run
 
+
+
+https://user-images.githubusercontent.com/130193684/230799894-a4f9dfae-4e3f-4a97-a81f-c3d545cfcfda.mp4
+
