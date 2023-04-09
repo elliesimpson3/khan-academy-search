@@ -7,12 +7,12 @@ This repo contains a couple of end-to-end tests for the search functionality on 
 
 ## Running the Tests
 
-The steps below will take you through running the tests. It is assumed you have nothing installed except for node (version v19.8.1) + git.
+The steps below will take you through running the tests. It is assumed you have Node.js (version v19.8.1) and git installed.
 
 ### 1. Clone this repo and open Cypress
 ```bash
 ## clone this repo to a local directory
-git clone https://github.com/<your-username>/khan-academy-search.git
+git clone https://github.com/elliesimpson3/khan-academy-search.git
 
 ## cd into the cloned repo
 cd khan-academy-search
@@ -20,7 +20,7 @@ cd khan-academy-search
 ## install the node_modules
 npm install
 
-## start the test in Cypress
+## Open Cypress
 npx cypress open
 ```
 
