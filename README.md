@@ -29,7 +29,7 @@ npx cypress open
 #### In the modal that appears:
 a) Click on E2E Testing\
 b) Select Chrome, and click 'Start E2E Testing in Chrome'
-#### In the browser that opens, click on the file named spec.cy,js
+#### In the browser that opens, click on the file named spec.cy.js
 
 ## Watch them run
 
